@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "vuepress": "^1.0.0-alpha.32"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.0"
+  }
+}
