@@ -1,8 +1,7 @@
 {
-  "dependencies": {
-    "vuepress": "^1.0.0-alpha.32"
-  },
   "devDependencies": {
-    "@vuepress/plugin-register-components": "^1.0.0-alpha.0"
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.0",
+    "markdown-it-container": "^2.0.0",
+    "vuepress": "^1.0.0-alpha.32"
   }
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="print">😜😜😜</button>
+        <button @click="print">这是真的吗</button>
     </div>
 </template>
 

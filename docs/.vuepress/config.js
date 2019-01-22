@@ -1,3 +1,6 @@
+const path = require('path')
+const docs = require('./docs')
+
 module.exports = {
     title: '公共组件库',
     description: '华图前端公共组件库',
@@ -14,5 +17,20 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    // abspath here
+    plugins: [
+        [ 
+            '@vuepress/register-components', 
+            {
+                componentsDir: path.join(__dirname, '/parts')
+            }
+        ],
+        [ 
+            docs,
+            {
+
+            }
+        ]
+    ]
 }
