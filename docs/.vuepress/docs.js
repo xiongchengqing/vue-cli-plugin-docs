@@ -13,18 +13,29 @@ module.exports = (options, ctx) => {
             md.set({ breaks: true })
             md.use(require('markdown-it-container'), name, {
                 validate(params) {
-                    return params.trim().match(new RegExp(`^${name}\s+(.*)$`))
+                    return params.trim().match(new RegExp(`^${name}\\s+(.*)$`))
                 },
                 render(tokens, idx) {
-                    const m = tokens[idx].info.trim().match(new RegExp(`^${name}\s+(.*)$`))
+                    // tokens see reflink: https://img.xiongc.com/tokens_from_markdownit.json
+                    // idx is the current token index
+                    const m = tokens[idx].info.trim().match(new RegExp(`^${name}\\s+(.*)$`))
 
                     if (tokens[idx].nesting === 1) {
                         // opening tag
-                        return '<details><summary>' + md.utils.escapeHtml(m[1]) + '</summary>\n';
+                        // md is an instance of markdown-it, and plz ref its API Doc 
+                        // https://markdown-it.github.io/markdown-it/#Renderer.render
+                        return `
+                                <details>
+                                    <summary> 
+                                        ${md.render(m[1]).html} 
+                                    </summary>
+                                `
 
                     } else {
                         // closing tag
-                        return '</details>\n';
+                        return `
+                                </details>
+                                `
                     }
                 }
             })
